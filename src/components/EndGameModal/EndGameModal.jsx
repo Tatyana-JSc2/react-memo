@@ -25,3 +25,4 @@ export function EndGameModal({ isWon, gameDurationSeconds, gameDurationMinutes, 
     </div>
   );
 }
+
