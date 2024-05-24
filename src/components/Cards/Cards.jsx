@@ -5,6 +5,7 @@ import styles from "./Cards.module.css";
 import { EndGameModal } from "../../components/EndGameModal/EndGameModal";
 import { Button } from "../../components/Button/Button";
 import { Card } from "../../components/Card/Card";
+import { useTasks } from "../../context/hooks/useTasks";
 
 // Игра закончилась
 const STATUS_LOST = "STATUS_LOST";
@@ -41,6 +42,9 @@ function getTimerValue(startDate, endDate) {
  * previewSeconds - сколько секунд пользователь будет видеть все карты открытыми до начала игры
  */
 export function Cards({ pairsCount = 3, previewSeconds = 5 }) {
+  const { lifes, setLifes, easy, setEasy } = useTasks();
+
+
   // В cards лежит игровое поле - массив карт и их состояние открыта\закрыта
   const [cards, setCards] = useState([]);
   // Текущий статус игры
@@ -73,6 +77,11 @@ export function Cards({ pairsCount = 3, previewSeconds = 5 }) {
     setGameEndDate(null);
     setTimer(getTimerValue(null, null));
     setStatus(STATUS_PREVIEW);
+    if (easy === true) {
+      setLifes(3);
+    } else {
+      setLifes(1);
+    }
   }
 
   /**
@@ -123,11 +132,45 @@ export function Cards({ pairsCount = 3, previewSeconds = 5 }) {
       return false;
     });
 
+
+    // Ищем открытые карты, у которых есть пара среди других открытых
+    const openCardsPair = openCards.filter(card => {
+      const sameCards = openCards.filter(openCard => card.suit === openCard.suit && card.rank === openCard.rank);
+
+      if (sameCards.length >= 2) {
+        return true;
+      }
+
+      return false;
+    });
+
+    const pairCards = openCardsPair.map(card => card.pair === true);
+
     const playerLost = openCardsWithoutPair.length >= 2;
+
 
     // "Игрок проиграл", т.к на поле есть две открытые карты без пары
     if (playerLost) {
+      //setLifes(lifes - 1);
+      if (lifes >= 2) {
+        //console.log(lifes);
+        const newCards = cards.map(card => {
+          return {
+            ...card,
+            pair: true,
+          };
+        });
+        setCards(newCards);
+        setLifes(lifes - 1);
+        return;
+      }
+
       finishGame(STATUS_LOST);
+      if (easy === true) {
+        setLifes(3);
+      } else {
+        setLifes(1);
+      }
       return;
     }
 
@@ -172,6 +215,8 @@ export function Cards({ pairsCount = 3, previewSeconds = 5 }) {
     };
   }, [gameStartDate, gameEndDate]);
 
+
+
   return (
     <div className={styles.container}>
       <div className={styles.header}>
@@ -209,7 +254,9 @@ export function Cards({ pairsCount = 3, previewSeconds = 5 }) {
           />
         ))}
       </div>
-
+      {easy === true && <div>
+        <p className={styles.title} >количество жизней: {lifes}</p>
+      </div>}
       {isGameEnded ? (
         <div className={styles.modalContainer}>
           <EndGameModal
