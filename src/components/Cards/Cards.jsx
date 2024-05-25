@@ -155,6 +155,9 @@ export function Cards({ pairsCount = 3, previewSeconds = 5 }) {
       if (lifes >= 2) {
         //console.log(lifes);
         const newCards = cards.map(card => {
+          if (card.id !== clickedCard.id) {
+            return card;
+          }
           return {
             ...card,
             pair: true,
@@ -270,3 +273,4 @@ export function Cards({ pairsCount = 3, previewSeconds = 5 }) {
     </div>
   );
 }
+
