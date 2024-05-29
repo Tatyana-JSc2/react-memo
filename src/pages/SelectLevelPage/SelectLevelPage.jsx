@@ -4,16 +4,16 @@ import { useEffect, useState } from "react";
 import { useTasks } from "../../context/hooks/useTasks";
 
 export function SelectLevelPage() {
-  const { lifes, setLifes, easy, setEasy } = useTasks();
-  const [level, setLevel] = useState(null);
+  const { lifes, setLifes, easy, setEasy, level, setLevel } = useTasks();
   const [unLevel, setUnLevel] = useState(false);
   const navigate = useNavigate();
   const children = "Играть";
-  const [paths, setPaths] = useState(null);
+  const [setPaths] = useState(null);
 
   useEffect(() => {
     setLifes(1);
     setEasy(false);
+    setLevel(null);
   }, [SelectLevelPage]);
 
   const goToPlay = () => {
@@ -26,7 +26,7 @@ export function SelectLevelPage() {
       setPaths(navigate("/game/9"));
     } else {
       setUnLevel(true);
-    };
+    }
   };
 
   function selectLifes() {
@@ -36,8 +36,8 @@ export function SelectLevelPage() {
     } else {
       setLifes(1);
       setEasy(false);
-    };
-  };
+    }
+  }
 
   console.log(lifes);
 
@@ -46,24 +46,48 @@ export function SelectLevelPage() {
       <div className={styles.modal}>
         <h1 className={unLevel === true ? styles.titleАttention : styles.title}>Выбери сложность</h1>
         <ul className={styles.levels}>
-          <li className={styles.level} type="button" onClick={() => { setLevel(1); setUnLevel(false); }}>
+          <li
+            className={styles.level}
+            type="button"
+            onClick={() => {
+              setLevel(1);
+              setUnLevel(false);
+            }}
+          >
             <p className={level === 1 ? styles.levelLinked : styles.levelLink}> 1 </p>
           </li>
-          <li className={styles.level} type="button" onClick={() => { setLevel(2); setUnLevel(false); }}>
+          <li
+            className={styles.level}
+            type="button"
+            onClick={() => {
+              setLevel(2);
+              setUnLevel(false);
+            }}
+          >
             <p className={level === 2 ? styles.levelLinked : styles.levelLink}> 2 </p>
           </li>
-          <li className={styles.level} type="button" onClick={() => { setLevel(3); setUnLevel(false); }}>
+          <li
+            className={styles.level}
+            type="button"
+            onClick={() => {
+              setLevel(3);
+              setUnLevel(false);
+            }}
+          >
             <p className={level === 3 ? styles.levelLinked : styles.levelLink}> 3 </p>
           </li>
         </ul>
         <div className={styles.checkbox}>
-          <input type="checkbox" name="checkbox" onChange={(e) => selectLifes()} />
+          <input type="checkbox" name="checkbox" onChange={e => selectLifes()} />
           <p className={easy === true ? styles.checkboxEasy : styles.checkboxHard}>Легкий режим (3 жизни)</p>
         </div>
-        <button type="button" className={styles.button} onClick={goToPlay}>{children}</button>
-      </div >
-
-    </div >
+        <button type="button" className={styles.button} onClick={goToPlay}>
+          {children}
+        </button>
+        <Link className={styles.linkText} to={"/liderbord"}>
+          Перейти к лидерборду
+        </Link>
+      </div>
+    </div>
   );
 }
-//{ Button({ children, goToPlay }) }

@@ -1,73 +1,71 @@
-
 @-webkit-keyframes heartbeat {
   from {
     -webkit-transform: scale(1);
-            transform: scale(1);
+    transform: scale(1);
     -webkit-transform-origin: center center;
-            transform-origin: center center;
+    transform-origin: center center;
     -webkit-animation-timing-function: ease-out;
-            animation-timing-function: ease-out;
+    animation-timing-function: ease-out;
   }
   10% {
     -webkit-transform: scale(0.91);
-            transform: scale(0.91);
+    transform: scale(0.91);
     -webkit-animation-timing-function: ease-in;
-            animation-timing-function: ease-in;
+    animation-timing-function: ease-in;
   }
   17% {
     -webkit-transform: scale(0.98);
-            transform: scale(0.98);
+    transform: scale(0.98);
     -webkit-animation-timing-function: ease-out;
-            animation-timing-function: ease-out;
+    animation-timing-function: ease-out;
   }
   33% {
     -webkit-transform: scale(0.87);
-            transform: scale(0.87);
+    transform: scale(0.87);
     -webkit-animation-timing-function: ease-in;
-            animation-timing-function: ease-in;
+    animation-timing-function: ease-in;
   }
   45% {
     -webkit-transform: scale(1);
-            transform: scale(1);
+    transform: scale(1);
     -webkit-animation-timing-function: ease-out;
-            animation-timing-function: ease-out;
+    animation-timing-function: ease-out;
   }
 }
 @keyframes heartbeat {
   from {
     -webkit-transform: scale(1);
-            transform: scale(1);
+    transform: scale(1);
     -webkit-transform-origin: center center;
-            transform-origin: center center;
+    transform-origin: center center;
     -webkit-animation-timing-function: ease-out;
-            animation-timing-function: ease-out;
+    animation-timing-function: ease-out;
   }
   10% {
     -webkit-transform: scale(0.91);
-            transform: scale(0.91);
+    transform: scale(0.91);
     -webkit-animation-timing-function: ease-in;
-            animation-timing-function: ease-in;
+    animation-timing-function: ease-in;
   }
   17% {
     -webkit-transform: scale(0.98);
-            transform: scale(0.98);
+    transform: scale(0.98);
     -webkit-animation-timing-function: ease-out;
-            animation-timing-function: ease-out;
+    animation-timing-function: ease-out;
   }
   33% {
     -webkit-transform: scale(0.87);
-            transform: scale(0.87);
+    transform: scale(0.87);
     -webkit-animation-timing-function: ease-in;
-            animation-timing-function: ease-in;
+    animation-timing-function: ease-in;
   }
   45% {
     -webkit-transform: scale(1);
-            transform: scale(1);
+    transform: scale(1);
     -webkit-animation-timing-function: ease-out;
-            animation-timing-function: ease-out;
+    animation-timing-function: ease-out;
   }
 }
-
 
 .container {
   width: 100%;
@@ -109,7 +107,7 @@
   line-height: 48px;
   color: red;
   -webkit-animation: heartbeat 1.5s ease-in-out infinite both;
-	        animation: heartbeat 1.5s ease-in-out infinite both;
+  animation: heartbeat 1.5s ease-in-out infinite both;
 }
 
 .levels {
@@ -128,7 +126,7 @@
   justify-content: center;
   flex-shrink: 0;
   border-radius: 12px;
-  background: #fff; 
+  background: #fff;
 }
 
 .levelLink {
@@ -141,9 +139,9 @@
   line-height: 72px;
   text-decoration: none;
 }
-.levelLink:active{
+.levelLink:active {
   -webkit-animation: heartbeat 1.5s ease-in-out infinite both;
-	        animation: heartbeat 1.5s ease-in-out infinite both;
+  animation: heartbeat 1.5s ease-in-out infinite both;
 }
 
 .levelLink:hover {
@@ -154,8 +152,8 @@
   color: #0080c1;
 }
 
-.levelLinked{
-  color: #004980; 
+.levelLinked {
+  color: #004980;
   text-align: center;
   font-family: StratosSkyeng;
   font-size: 64px;
@@ -170,19 +168,19 @@
   align-items: center;
   justify-content: space-between;
   margin-bottom: 30px;
-  
-  & input[type=checkbox] {
+
+  & input[type="checkbox"] {
     position: relative;
     width: 24px;
     height: 13px;
     border-radius: 100px;
-    background: #EAEEF6;
+    background: #eaeef6;
     outline: none;
     -webkit-appearance: none;
-       -moz-appearance: none;
-            appearance: none;
+    -moz-appearance: none;
+    appearance: none;
   }
-  & input[type=checkbox]::before {
+  & input[type="checkbox"]::before {
     content: "";
     position: absolute;
     top: 1px;
@@ -190,13 +188,13 @@
     width: 11px;
     height: 11px;
     border-radius: 50%;
-    background-color: #94A6BE;
-    
+    background-color: #94a6be;
+
     transition: 0.5s;
   }
-  & input:checked[type=checkbox]::before {
+  & input:checked[type="checkbox"]::before {
     left: 12px;
-    background-color:#7ac100;
+    background-color: #7ac100;
   }
 }
 
@@ -208,7 +206,7 @@
 }
 
 .checkboxHard {
-  color: #94A6BE;
+  color: #94a6be;
   font-size: 24px;
   line-height: 21px;
   letter-spacing: -0.14px;
@@ -239,4 +237,17 @@
 
 .button:hover {
   background: #7ac100cc;
+}
+
+.linkText {
+  font-variant-numeric: lining-nums proportional-nums;
+  font-family: Roboto;
+  font-size: 18px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 32px;
+  color: #004980;
+
+  margin-top: 30px;
+  margin-bottom: 40px;
 }

@@ -42,8 +42,7 @@ function getTimerValue(startDate, endDate) {
  * previewSeconds - сколько секунд пользователь будет видеть все карты открытыми до начала игры
  */
 export function Cards({ pairsCount = 3, previewSeconds = 5 }) {
-  const { lifes, setLifes, easy, setEasy } = useTasks();
-
+  const { lifes, setLifes, easy } = useTasks();
 
   // В cards лежит игровое поле - массив карт и их состояние открыта\закрыта
   const [cards, setCards] = useState([]);
@@ -132,7 +131,6 @@ export function Cards({ pairsCount = 3, previewSeconds = 5 }) {
       return false;
     });
 
-
     // Ищем открытые карты, у которых есть пара среди других открытых
     const openCardsPair = openCards.filter(card => {
       const sameCards = openCards.filter(openCard => card.suit === openCard.suit && card.rank === openCard.rank);
@@ -144,10 +142,10 @@ export function Cards({ pairsCount = 3, previewSeconds = 5 }) {
       return false;
     });
 
-    const pairCards = openCardsPair.map(card => card.pair === true);
+    //const pairCards = openCardsPair.map(card => card.pair === true);
+    openCardsPair.map(card => card.pair === true);
 
     const playerLost = openCardsWithoutPair.length >= 2;
-
 
     // "Игрок проиграл", т.к на поле есть две открытые карты без пары
     if (playerLost) {
@@ -218,8 +216,6 @@ export function Cards({ pairsCount = 3, previewSeconds = 5 }) {
     };
   }, [gameStartDate, gameEndDate]);
 
-
-
   return (
     <div className={styles.container}>
       <div className={styles.header}>
@@ -257,9 +253,11 @@ export function Cards({ pairsCount = 3, previewSeconds = 5 }) {
           />
         ))}
       </div>
-      {easy === true && <div>
-        <p className={styles.title} >количество жизней: {lifes}</p>
-      </div>}
+      {easy === true && (
+        <div>
+          <p className={styles.title}>количество жизней: {lifes}</p>
+        </div>
+      )}
       {isGameEnded ? (
         <div className={styles.modalContainer}>
           <EndGameModal
@@ -270,7 +268,14 @@ export function Cards({ pairsCount = 3, previewSeconds = 5 }) {
           />
         </div>
       ) : null}
+      {/*<div className={styles.modalContainer}>
+          <EndGameModal
+            isWon={status === STATUS_WON}
+            gameDurationSeconds={timer.seconds}
+            gameDurationMinutes={timer.minutes}
+            onClick={resetGame}
+          />
+    </div>*/}
     </div>
   );
 }
-
