@@ -29,14 +29,14 @@ export function EndGameModal({ isWon, gameDurationSeconds, gameDurationMinutes, 
   });
 
   function winTime() {
-    // if (easy === false && level === 3) {
-    const timeSecond = gameDurationMinutes * 60 + gameDurationSeconds;
-    const Lid = list.filter(el => el.time > timeSecond);
-    if (Lid.length > 0) {
-      return true;
+    if (easy === false && level === 3) {
+      const timeSecond = gameDurationMinutes * 60 + gameDurationSeconds;
+      const Lid = list.filter(el => el.time > timeSecond);
+      if (Lid.length > 0) {
+        return true;
+      }
+      return false;
     }
-    return false;
-    // }
   }
 
   const handleSubmit = async e => {
