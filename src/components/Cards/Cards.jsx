@@ -142,8 +142,7 @@ export function Cards({ pairsCount = 3, previewSeconds = 5 }) {
       return false;
     });
 
-    //const pairCards = openCardsPair.map(card => card.pair === true);
-    openCardsPair.map(card => card.pair === true);
+    const pairCards = openCardsPair.map(card => ({ ...card, pair: true }));
 
     const playerLost = openCardsWithoutPair.length >= 2;
 
@@ -151,18 +150,17 @@ export function Cards({ pairsCount = 3, previewSeconds = 5 }) {
     if (playerLost) {
       //setLifes(lifes - 1);
       if (lifes >= 2) {
-        //console.log(lifes);
-        const newCards = cards.map(card => {
-          if (card.id !== clickedCard.id) {
-            return card;
-          }
-          return {
-            ...card,
-            pair: true,
-          };
-        });
-        setCards(newCards);
         setLifes(lifes - 1);
+        setTimeout(() => {
+          const returnOnlyPairOpen = cards.map(card => {
+            if (pairCards.some(openCard => openCard.id === card.id)) {
+              return { ...card, open: true };
+            } else {
+              return { ...card, open: false };
+            }
+          });
+          setCards(returnOnlyPairOpen);
+        }, 500);
         return;
       }
 

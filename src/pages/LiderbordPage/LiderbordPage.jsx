@@ -6,7 +6,7 @@ import { useList } from "../../context/hooks/useList";
 
 export function LiderbordPage() {
   const navigate = useNavigate();
-  const { list } = useList();
+  const { list, timeFormat } = useList();
 
   function StartPlay() {
     navigate("/");
@@ -32,7 +32,7 @@ export function LiderbordPage() {
           {list
             .sort((a, b) => a.time - b.time)
             .map(el => (
-              <ListElement key={el.id} number={(num += 1)} name={el.name} time={el.time} />
+              <ListElement key={el.id} number={(num += 1)} name={el.name} time={timeFormat(el.time)} />
             ))}
         </div>
       </div>

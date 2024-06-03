@@ -6,6 +6,12 @@ export const ListContext = createContext();
 export const ListProvider = ({ children }) => {
   const [list, setList] = useState([]);
 
+  function timeFormat(time) {
+    return `${Math.floor(time / 60)}:${time - Math.floor(time / 60) * 60}`;
+  }
+
+  console.log(list);
+
   useEffect(() => {
     getList()
       .then(data => {
@@ -22,5 +28,5 @@ export const ListProvider = ({ children }) => {
       });
   }, []);
 
-  return <ListContext.Provider value={{ list, setList }}>{children}</ListContext.Provider>;
+  return <ListContext.Provider value={{ list, setList, timeFormat }}>{children}</ListContext.Provider>;
 };

@@ -23,7 +23,8 @@
   font-style: normal;
   font-weight: 400;
   line-height: 48px;
-
+  max-width: 300px;
+  text-align: center;
   margin-bottom: 28px;
 }
 
@@ -86,4 +87,29 @@
 
   margin-top: 30px;
   margin-bottom: 50px;
+}
+
+.linkText2 {
+  font-variant-numeric: lining-nums proportional-nums;
+  font-family: Roboto;
+  font-size: 18px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 32px;
+  color: #004980;
+
+  margin-top: 30px;
+}
+
+.linkText3 {
+  font-variant-numeric: lining-nums proportional-nums;
+  font-family: Roboto;
+  font-size: 30px;
+  font-style: normal;
+  font-weight: 400;
+  max-width: 400px;
+  text-align: center;
+  color: #7ac100;
+
+  margin-top: 40px;
 }

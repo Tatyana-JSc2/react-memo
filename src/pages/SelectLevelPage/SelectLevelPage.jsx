@@ -8,7 +8,7 @@ export function SelectLevelPage() {
   const [unLevel, setUnLevel] = useState(false);
   const navigate = useNavigate();
   const children = "Играть";
-  const [setPaths] = useState(null);
+  const [paths, setPaths] = useState(null);
 
   useEffect(() => {
     setLifes(1);
@@ -26,6 +26,7 @@ export function SelectLevelPage() {
       setPaths(navigate("/game/9"));
     } else {
       setUnLevel(true);
+      console.log(paths);
     }
   };
 
