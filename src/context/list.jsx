@@ -10,14 +10,14 @@ export const ListProvider = ({ children }) => {
     return `${Math.floor(time / 60)}:${time - Math.floor(time / 60) * 60}`;
   }
 
-  console.log(list);
+  // console.log(list);
 
   useEffect(() => {
     getList()
       .then(data => {
         //throw new Error("Ошибка сервера");
         setList(data.leaders);
-        console.log(data.leaders);
+        //console.log(data.leaders);
       })
       .catch(err => {
         //setError(err.message);

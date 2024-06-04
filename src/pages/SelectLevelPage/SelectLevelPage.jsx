@@ -14,7 +14,7 @@ export function SelectLevelPage() {
     setLifes(1);
     setEasy(false);
     setLevel(null);
-  }, [SelectLevelPage]);
+  }, []);
 
   const goToPlay = () => {
     //setUnLevel(false);

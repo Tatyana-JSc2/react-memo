@@ -2,14 +2,14 @@ import styles from "./EndGameModal.module.css";
 import { Button } from "../Button/Button";
 import deadImageUrl from "./images/dead.png";
 import celebrationImageUrl from "./images/celebration.png";
-//import { useTasks } from "../../context/hooks/useTasks";
+import { useTasks } from "../../context/hooks/useTasks";
 import { useList } from "../../context/hooks/useList";
 import { useState } from "react";
 import { Link } from "react-router-dom";
 import { postList } from "../../api";
 
 export function EndGameModal({ isWon, gameDurationSeconds, gameDurationMinutes, onClick }) {
-  // const { easy, level } = useTasks();
+  const { easy, level } = useTasks();
   const { list, setList } = useList();
   const [error, setError] = useState(null);
   const [handleSubmitOk, setHandleSubmitOk] = useState(false);
