@@ -7,7 +7,9 @@ export const ListProvider = ({ children }) => {
   const [list, setList] = useState([]);
 
   function timeFormat(time) {
-    return `${Math.floor(time / 60)}:${time - Math.floor(time / 60) * 60}`;
+    return `${Math.floor(time / 60)
+      .toString()
+      .padStart(2, 0)}:${(time - Math.floor(time / 60) * 60).toString().padStart(2, 0)}`;
   }
 
   // console.log(list);
