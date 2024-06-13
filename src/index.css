@@ -32,6 +32,9 @@ ol {
   src:
     url("../public/assets/fonts/StratosSkyeng.woff2") format("woff2"),
     local("Arial");
+    
   font-weight: 400;
   font-style: normal;
 }
+
+
